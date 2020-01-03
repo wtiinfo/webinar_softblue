@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}" />
+</head>
+<body>
+<header>
+ <div class="divTopo">
+  <img th:src="@{/img/download.png}" class="logo" />
+ </div>
+</header>
+<div class="divCorpoPrincipal">
+<form method="post" th:action="@{/msg/criar}" th:object="${msg}" >
+  <div class="divPostagem">
+   <div class="divCriarPostagem">
+    <select class="selectCriarMsg" th:field="*{user.id}">
+      <option th:each="u : ${users}" th:value="${u.id}" th:text="${u.name} + ' (' + ${u.formattedId} + ')'" />
+    </select>
+     <br />
+    <textarea class="textareaCriarMsg" th:field="*{texto}" placeholder="No que está pensando?"></textarea>
+   </div>
+  </div>
+  <input type="button" value="Cancelar" class="btnCancel" onclick="location.href='index.html';" />
+  <input type="submit" value="Criar" class="btnCriar" />
+</form>
+</div>
+</body>
+</html>
